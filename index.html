@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="form">
+        <h1>Submit an Order</h1>
+        <form>
+            <label for="orderName">Order Name:</label>
+            <input type="text" id="orderName">
+            <label for="orderDate">Date:</label>
+            <input type="datetime-local" id="orderDate">
+            <label for="orderTypes">Type:</label>
+            <select id="orderTypes">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+            </select>
+            <label for="orderDetails">Details:</label>
+            <textarea id="orderDetails"></textarea>
+            <button onclick="orderPlaced(event)">Submit</button>
+        </form>
+    </div>
+
+    <div class="output">
+        <h1>Current Orders:</h1>
+        <div id="orders">
+
+        </div>
+    </div>
+
+    <script src="app/app.js"></script>
+</body>
+
+</html>
