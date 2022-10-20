@@ -1,26 +1,35 @@
-class NewOrder{
-    //Create an overall orders array
-    orders = {};
+//Create an overall orders array
+const orders = [];
 
-
+class OrderHandling{
     //Use this class to then store values into the array, that then can be output to HTML
+    
+    //order placed function
     orderPlaced(event){
+        //Display current orders element
+        document.getElementById("output").style.display = "block";
+
         //Prevents refresh of the page on click
         event.preventDefault();
     
+        //grab values of the form
         let ordName = document.getElementById("orderName").value;
-        let ordDate = document.getElementById("orderDate").value;
-        let ordType = document.getElementById("orderTypes").value;
-        let ordDetail = document.getElementById("orderDetails").value;
+        let ordDate = " " + document.getElementById("orderDate").value;
+        let ordType = " " + document.getElementById("orderTypes").value;
+        let ordDetail = " " + document.getElementById("orderDetails").value;
 
         //create an array item for each order, then send it to the overall array
-        const order = [ordName, ordDate, ordType, ordDetail];
-        orders.push(order);
+        orders.push([ordName, ordDate, ordType, ordDetail, "</br>"]);
        
+        
+        //new instance of Display Order
+        const ordersDisplay = new DisplayOrder;    
         //update display
-        DisplayOrder.displayData(orders);
+        ordersDisplay.displayData();
+
+        
         //sort data
-        OrderData.dataSort(ordType);
+        sortData.dataSort(ordType);
     }
 
     //order removed function
@@ -31,58 +40,63 @@ class NewOrder{
         //remove last order
         orders.pop();
 
+        //new instance of Display Order
+        const ordersDisplay = new DisplayOrder;  
         //update display
-        DisplayOrder.displayData(orders);
+        ordersDisplay.displayData();
+
+
+        //Checks to display current orders element, hide it if no more orders
+        if(orders.length == 0){
+            document.getElementById("output").style.display = "none";
+        }else{
+            document.getElementById("output").style.display = "block";
+        }
     }
 
 };
 
 class DisplayOrder{
-    //Class will use contents of X instance from newOrder to output it to the HTML. 
-    //Class here will also be used to remove content from HTML
-    constructor(order){
-        this.order = order;
-    }
+    //Class will be used to display/remove content of the HTML.
+    //Class here will also be used to remove content from HTML via the update
 
     //display the data based off of the orders array, which is updated each time a button is clicked
-    displayData(order){
-        ordBox = document.getElementById("orders");
-        ordBox.innerHTML = order;
+    displayData(){
+        let ordBox = document.getElementById("orders");
+        ordBox.innerHTML = orders;
     }
-
 
 };
 
 class OrderData{
     //Keep track of what all has been ordered, create and output graph
-    constructor(order){
-        this.order = order;
+    constructor(){
+        this.countA = 0;
+        this.countB = 0;
+        this.countC = 0;
+        this.countD = 0;
     }
-    countA = 0;
-    countB = 0;
-    countC = 0;
-    countD = 0;
 
     //data sorting to prepare for the graph
     dataSort(orderType){
-        this.order = orderType;
 
-        if(orderType == "Volvo"){
-            countA++;
-        }else if(order == "Saab"){
-            countB++
-        }else if(order == "Opel"){
-            countC++;
-        }else{
-            countD++;
+        if(orderType == " volvo"){
+            this.countA++;
+        }else if(orderType == " saab"){
+            this.countB++
+        }else if(orderType == " opel"){
+            this.countC++;
+        }else if(orderType == " audi"){
+            this.countD++;
         }
 
-        console.log(countA + " " + countB + " " + countC + " " + countD);
+        console.log(this.countA + " " + this.countB + " " + this.countC + " " + this.countD);
     }
 };
 
-//instantiate the initial class
-const OrderSystem = new NewOrder;
+//instantiate the new order class and the data sorting class
+const OrderSystem = new OrderHandling;
+const sortData = new OrderData;
 
 //grab button IDs to begin executing the code
 let btnSubmit = document.getElementById("turnIn");

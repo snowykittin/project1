@@ -11,26 +11,26 @@
 
 <body>
     <div class="form">
-        <h1>Submit an Order</h1>
+        <h1>Order your new Luxury Car</h1>
         <form>
-            <label for="orderName">Order Name:</label>
+            <label for="orderName">Owner Name:</label>
             <input type="text" id="orderName">
-            <label for="orderDate">Date:</label>
+            <label for="orderDate">Date of Order:</label>
             <input type="datetime-local" id="orderDate">
-            <label for="orderTypes">Type:</label>
+            <label for="orderTypes">Type of Car:</label>
             <select id="orderTypes">
                 <option value="volvo">Volvo</option>
                 <option value="saab">Saab</option>
                 <option value="opel">Opel</option>
                 <option value="audi">Audi</option>
             </select>
-            <label for="orderDetails">Details:</label>
+            <label for="orderDetails">Wanted Features:</label>
             <textarea id="orderDetails"></textarea>
             <button id="turnIn">Submit</button>
         </form>
     </div>
 
-    <div class="output">
+    <div id="output">
         <h1>Current Orders:</h1>
         <div id="orders">
 
