@@ -20,10 +20,10 @@
                 <input type="date" id="orderDate">
                 <label for="orderTypes">Type of Car:</label>
                 <select id="orderTypes">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Saab">Saab</option>
+                    <option value="Opel">Opel</option>
+                    <option value="Audi">Audi</option>
                 </select>
                 <label for="orderDetails">Wanted Features:</label>
                 <textarea id="orderDetails"></textarea>
@@ -41,23 +41,24 @@
     </div>
 
     <div id="resultsGraph">
-        <h1>Results Summary:</h1>
+        <h2>Ordered Cars:</h2>
+        <h4>Total Orders: <span id="total">0</span></h4>
         <div class="graph">
             <div class="graphItem">
                 <p>Volvo: <span id="countOne">0</span></p>
-                <div id="optionOne"></div>
+                <div id="optionOne" class="option"></div>
             </div>
             <div class="graphItem">
                 <p>Saab: <span id="countTwo">0</span></p>
-                <div id="optionTwo"></div>
+                <div id="optionTwo" class="option"></div>
             </div>
             <div class="graphItem">
                 <p>Opel: <span id="countThree">0</span></p>
-                <div id="optionThree"></div>
+                <div id="optionThree" class="option"></div>
             </div>
             <div class="graphItem">
                 <p>Audi: <span id="countFour">0</span></p>
-                <div id="optionFour"></div>
+                <div id="optionFour" class="option"></div>
             </div>
         </div>
     </div>

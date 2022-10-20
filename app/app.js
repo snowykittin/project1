@@ -19,13 +19,10 @@ class OrderHandling{
         if(ordName == "" || ordDate == " " || ordDetail == " "){
             alert("Please fill out all fields.");
         }else{
-        //show current orders
-        document.getElementById("output").style.display = "block";
 
         //create an array item for each order, then send it to the overall array
         orders.push([ordName, ordDate, ordType, ordDetail]);
-       
-        
+
         //new instance of Display Order
         const ordersDisplay = new DisplayOrder;    
         //update display
@@ -50,6 +47,15 @@ class OrderHandling{
         const ordersDisplay = new DisplayOrder;  
         //update display
         ordersDisplay.displayData();
+    }
+
+};
+
+class DisplayOrder{
+    //display the data based off of the orders array, which is updated each time a button is clicked
+    displayData(){
+        let ordBox = document.getElementById("orders");
+        ordBox.innerHTML = orders;
 
         //hide the current orders if there are no more orders in the list
         if(orders.length == 0){
@@ -57,18 +63,6 @@ class OrderHandling{
         }else{
             document.getElementById("output").style.display = "block";
         }
-    }
-
-};
-
-class DisplayOrder{
-    //Class will be used to display/remove content of the HTML.
-    //Class here will also be used to remove content from HTML via the update
-
-    //display the data based off of the orders array, which is updated each time a button is clicked
-    displayData(){
-        let ordBox = document.getElementById("orders");
-        ordBox.innerHTML = orders;
     }
 
 };
@@ -86,13 +80,13 @@ class OrderData{
     //data sorting to prepare for the graph
     dataSort(orderType){
 
-        if(orderType == " volvo"){
+        if(orderType == " Volvo"){
             this.countA++;
-        }else if(orderType == " saab"){
+        }else if(orderType == " Saab"){
             this.countB++
-        }else if(orderType == " opel"){
+        }else if(orderType == " Opel"){
             this.countC++;
-        }else if(orderType == " audi"){
+        }else if(orderType == " Audi"){
             this.countD++;
         }
 
@@ -109,6 +103,7 @@ class OrderData{
         this.total = this.countA + this.countB + this.countC + this.countD;
 
         //update the count of each counter
+        document.getElementById("total").innerHTML = this.total;
         document.getElementById("countOne").innerHTML = countOne;
         document.getElementById("countTwo").innerHTML = countTwo;
         document.getElementById("countThree").innerHTML = countThree;
