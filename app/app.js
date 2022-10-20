@@ -10,7 +10,7 @@ class OrderHandling{
         event.preventDefault();
     
         //grab values of the form
-        let ordName = document.getElementById("orderName").value;
+        let ordName = "</br>" + document.getElementById("orderName").value;
         let ordDate = " " + document.getElementById("orderDate").value;
         let ordType = " " + document.getElementById("orderTypes").value;
         let ordDetail = " " + document.getElementById("orderDetails").value;
@@ -19,11 +19,11 @@ class OrderHandling{
         if(ordName == "" || ordDate == " " || ordDetail == " "){
             alert("Please fill out all fields.");
         }else{
-        //Display current orders element
+        //show current orders
         document.getElementById("output").style.display = "block";
-        
+
         //create an array item for each order, then send it to the overall array
-        orders.push([ordName, ordDate, ordType, ordDetail, "</br>"]);
+        orders.push([ordName, ordDate, ordType, ordDetail]);
        
         
         //new instance of Display Order
@@ -51,8 +51,7 @@ class OrderHandling{
         //update display
         ordersDisplay.displayData();
 
-
-        //Checks to display current orders element, hide it if no more orders
+        //hide the current orders if there are no more orders in the list
         if(orders.length == 0){
             document.getElementById("output").style.display = "none";
         }else{
@@ -103,6 +102,9 @@ class OrderData{
     }
 
     graphData(countOne, countTwo, countThree, countFour){
+        //Display current results element
+        document.getElementById("resultsGraph").style.display = "block";
+
         //update the total
         this.total = this.countA + this.countB + this.countC + this.countD;
 

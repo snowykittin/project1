@@ -10,35 +10,37 @@
 </head>
 
 <body>
-    <div class="form">
-        <h1>Order your new Luxury Car</h1>
-        <form>
-            <label for="orderName">Owner Name:</label>
-            <input type="text" id="orderName" required>
-            <label for="orderDate">Date of Order:</label>
-            <input type="date" id="orderDate" required>
-            <label for="orderTypes">Type of Car:</label>
-            <select id="orderTypes" required>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
-            </select>
-            <label for="orderDetails">Wanted Features:</label>
-            <textarea id="orderDetails" required></textarea>
-            <input type="submit" id="turnIn">
-        </form>
-    </div>
-
-    <div id="output">
-        <h1>Current Orders:</h1>
-        <div id="orders">
-
+    <div class="ordering">
+        <div class="form">
+            <h1>Order a Luxury Car</h1>
+            <form>
+                <label for="orderName">Owner Name:</label>
+                <input type="text" id="orderName">
+                <label for="orderDate">Date of Order:</label>
+                <input type="date" id="orderDate">
+                <label for="orderTypes">Type of Car:</label>
+                <select id="orderTypes">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <label for="orderDetails">Wanted Features:</label>
+                <textarea id="orderDetails"></textarea>
+                <input type="submit" id="turnIn">
+            </form>
         </div>
-        <button id="removeOrder">Remove Last Order</button>
+
+        <div id="output">
+            <h1>Current Orders:</h1>
+            <div id="orders">
+
+            </div>
+            <button id="removeOrder">Remove Last Order</button>
+        </div>
     </div>
 
-    <div class="resultsGraph">
+    <div id="resultsGraph">
         <h1>Results Summary:</h1>
         <div class="graph">
             <div class="graphItem">
