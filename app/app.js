@@ -6,9 +6,6 @@ class OrderHandling{
     
     //order placed function
     orderPlaced(event){
-        //Display current orders element
-        document.getElementById("output").style.display = "block";
-
         //Prevents refresh of the page on click
         event.preventDefault();
     
@@ -18,6 +15,13 @@ class OrderHandling{
         let ordType = " " + document.getElementById("orderTypes").value;
         let ordDetail = " " + document.getElementById("orderDetails").value;
 
+        //make sure they filled it out before executing code
+        if(ordName == "" || ordDate == " " || ordDetail == " "){
+            alert("Please fill out all fields.");
+        }else{
+        //Display current orders element
+        document.getElementById("output").style.display = "block";
+        
         //create an array item for each order, then send it to the overall array
         orders.push([ordName, ordDate, ordType, ordDetail, "</br>"]);
        
@@ -30,6 +34,8 @@ class OrderHandling{
         
         //sort data
         sortData.dataSort(ordType);
+        }
+
     }
 
     //order removed function
@@ -75,6 +81,7 @@ class OrderData{
         this.countB = 0;
         this.countC = 0;
         this.countD = 0;
+        this.total = 0;
     }
 
     //data sorting to prepare for the graph
@@ -90,7 +97,40 @@ class OrderData{
             this.countD++;
         }
 
-        console.log(this.countA + " " + this.countB + " " + this.countC + " " + this.countD);
+        //console.log(this.countA + " " + this.countB + " " + this.countC + " " + this.countD);
+        this.graphData(this.countA, this.countB, this.countC, this.countD);
+        
+    }
+
+    graphData(countOne, countTwo, countThree, countFour){
+        //update the total
+        this.total = this.countA + this.countB + this.countC + this.countD;
+
+        //update the count of each counter
+        document.getElementById("countOne").innerHTML = countOne;
+        document.getElementById("countTwo").innerHTML = countTwo;
+        document.getElementById("countThree").innerHTML = countThree;
+        document.getElementById("countFour").innerHTML = countFour;
+
+        //retrieve the "bar" of each part
+        let displayOne = document.getElementById("optionOne");
+        let displayTwo = document.getElementById("optionTwo");
+        let displayThree = document.getElementById("optionThree");
+        let displayFour = document.getElementById("optionFour");
+
+        //use the total and counts of each to set the width of a "graph" with the average
+        let lengthOne = Math.floor((countOne/this.total) * 100);
+        let lengthTwo = Math.floor((countTwo/this.total) * 100);
+        let lengthThree = Math.floor((countThree/this.total) * 100);
+        let lengthFour = Math.floor((countFour/this.total) * 100);
+
+        //set the width to whatever the length is
+        displayOne.style.width = String(lengthOne)+"%";
+        displayTwo.style.width = String(lengthTwo)+"%";
+        displayThree.style.width = String(lengthThree)+"%";
+        displayFour.style.width = String(lengthFour)+"%";
+
+        //console.log(lengthOne, lengthTwo, lengthThree, lengthFour);
     }
 };
 

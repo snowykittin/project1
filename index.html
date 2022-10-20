@@ -14,19 +14,19 @@
         <h1>Order your new Luxury Car</h1>
         <form>
             <label for="orderName">Owner Name:</label>
-            <input type="text" id="orderName">
+            <input type="text" id="orderName" required>
             <label for="orderDate">Date of Order:</label>
-            <input type="datetime-local" id="orderDate">
+            <input type="date" id="orderDate" required>
             <label for="orderTypes">Type of Car:</label>
-            <select id="orderTypes">
+            <select id="orderTypes" required>
                 <option value="volvo">Volvo</option>
                 <option value="saab">Saab</option>
                 <option value="opel">Opel</option>
                 <option value="audi">Audi</option>
             </select>
             <label for="orderDetails">Wanted Features:</label>
-            <textarea id="orderDetails"></textarea>
-            <button id="turnIn">Submit</button>
+            <textarea id="orderDetails" required></textarea>
+            <input type="submit" id="turnIn">
         </form>
     </div>
 
@@ -36,6 +36,28 @@
 
         </div>
         <button id="removeOrder">Remove Last Order</button>
+    </div>
+
+    <div class="resultsGraph">
+        <h1>Results Summary:</h1>
+        <div class="graph">
+            <div class="graphItem">
+                <p>Volvo: <span id="countOne">0</span></p>
+                <div id="optionOne"></div>
+            </div>
+            <div class="graphItem">
+                <p>Saab: <span id="countTwo">0</span></p>
+                <div id="optionTwo"></div>
+            </div>
+            <div class="graphItem">
+                <p>Opel: <span id="countThree">0</span></p>
+                <div id="optionThree"></div>
+            </div>
+            <div class="graphItem">
+                <p>Audi: <span id="countFour">0</span></p>
+                <div id="optionFour"></div>
+            </div>
+        </div>
     </div>
 
     <script src="app/app.js"></script>
